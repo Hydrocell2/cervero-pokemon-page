@@ -1,0 +1,545 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .navbar-brand, .logo-text {
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+}
+
+.navbar {
+    background: linear-gradient(135deg, #DC0A2D 0%, #000000 100%);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.navbar-brand {
+    margin-right: 3rem;
+}
+
+.navbar-collapse {
+    position: relative;
+}
+
+.navbar-center {
+    position: absolute;
+    left: 42%;
+    transform: translateX(-50%);
+}
+
+@media (min-width: 1400px) {
+    .navbar-center {
+        left: 44%;
+    }
+}
+
+.btn-music-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, #DC0A2D 0%, #FF1744 100%);
+    border: 3px solid #FFFFFF;
+    color: #FFFFFF;
+    font-size: 1.8rem;
+    padding: 1rem;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 10, 45, 0.5);
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.btn-music-float:hover {
+    background: linear-gradient(135deg, #FF1744 0%, #DC0A2D 100%);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(220, 10, 45, 0.7);
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #FFFFFF;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.navbar-nav .nav-link {
+    color: #FFFFFF !important;
+    font-weight: 500;
+    margin: 0 1.2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    font-size: 1.05rem;
+    white-space: nowrap;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: #00D9FF !important;
+    transform: translateY(-2px);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background-color: #00D9FF;
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after {
+    width: 80%;
+}
+
+.nav-icon {
+    font-size: 1.5rem !important;
+    padding: 0.5rem 0.8rem !important;
+    margin: 0 0.3rem !important;
+}
+
+.nav-icon i {
+    transition: transform 0.3s ease;
+}
+
+.nav-icon:hover i {
+    transform: scale(1.2);
+}
+
+.nav-icon::after {
+    display: none;
+}
+
+.hero-section {
+    position: relative;
+    background: linear-gradient(135deg, #000000 0%, #DC0A2D 50%, #000000 100%);
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+
+.hero-video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-video.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+.hero-video.fading-in {
+    opacity: 0;
+    z-index: 2;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 50px,
+            rgba(255, 255, 255, 0.03) 50px,
+            rgba(255, 255, 255, 0.03) 51px
+        ),
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 50px,
+            rgba(255, 255, 255, 0.03) 50px,
+            rgba(255, 255, 255, 0.03) 51px
+        );
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 0;
+}
+
+.hero-title {
+    font-size: 4.5rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9);
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    color: #FFFFFF;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    line-height: 1.8;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.btn-hero {
+    background-color: #DC0A2D;
+    color: #FFFFFF;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 1rem 3rem;
+    border: 3px solid #FFFFFF;
+    border-radius: 50px;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(220, 10, 45, 0.4);
+}
+
+.btn-hero:hover {
+    background-color: #FFFFFF;
+    color: #DC0A2D;
+    border-color: #DC0A2D;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(220, 10, 45, 0.6);
+}
+
+.carousel-section {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    position: relative;
+}
+
+.carousel-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 50px,
+            rgba(220, 10, 45, 0.02) 50px,
+            rgba(220, 10, 45, 0.02) 51px
+        );
+    pointer-events: none;
+}
+
+.news-heading {
+    color: #FFFFFF !important;
+    position: relative;
+    z-index: 1;
+}
+
+.news-heading::after {
+    background: linear-gradient(90deg, #DC0A2D 0%, #FFFFFF 100%);
+}
+
+.carousel-image {
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-inner {
+    position: relative;
+    z-index: 1;
+}
+
+.carousel-caption {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.6) 70%, transparent 100%);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 3rem 2rem 2rem;
+    border-radius: 0 0 10px 10px;
+}
+
+.carousel-caption h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-caption p {
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.9));
+    width: 3rem;
+    height: 3rem;
+}
+
+.products-section {
+    background-color: #FFFFFF;
+}
+
+.section-heading {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #DC0A2D;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 1rem;
+}
+
+.section-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #DC0A2D 0%, #000000 100%);
+}
+
+.product-card {
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(220, 10, 45, 0.3);
+}
+
+.product-card .card-img-top {
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.product-card .card-body {
+    padding: 1.5rem;
+    background-color: #FFFFFF;
+}
+
+.product-card .card-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+}
+
+.card-price {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #DC0A2D;
+    margin-bottom: 1rem;
+}
+
+.btn-card {
+    background-color: #000000;
+    color: #FFFFFF;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: 600;
+    border: 2px solid #000000;
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.btn-card:hover {
+    background-color: #DC0A2D;
+    border-color: #DC0A2D;
+    color: #FFFFFF;
+    transform: scale(1.05);
+}
+
+.footer {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    color: #FFFFFF;
+    border-top: 4px solid #DC0A2D;
+}
+
+.footer-heading {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #DC0A2D;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+    color: #cccccc;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #DC0A2D;
+    padding-left: 5px;
+}
+
+.footer-text {
+    color: #cccccc;
+    line-height: 1.8;
+}
+
+.footer-copyright {
+    color: #999999;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 991px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .section-heading {
+        font-size: 2.2rem;
+    }
+    
+    .navbar-collapse {
+        position: static;
+    }
+    
+    .navbar-center {
+        position: static !important;
+        transform: none !important;
+        left: auto !important;
+    }
+    
+    .navbar-nav {
+        text-align: center;
+        padding: 1rem 0;
+    }
+    
+    .navbar-nav .nav-link {
+        margin: 0.5rem 0;
+    }
+    
+    .nav-icon {
+        margin: 0.5rem 0 !important;
+    }
+    
+    .btn-music-float {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .btn-hero {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    
+    .section-heading {
+        font-size: 1.8rem;
+    }
+    
+    .logo-text {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-image {
+        height: 300px;
+    }
+    
+    .carousel-caption h3 {
+        font-size: 1.5rem;
+    }
+    
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+    
+    .btn-music-float {
+        bottom: 1rem;
+        right: 1rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+}
